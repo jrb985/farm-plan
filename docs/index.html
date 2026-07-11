@@ -63,8 +63,9 @@
     .meta { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); letter-spacing: .03em; margin: 0 0 44px; }
     .meta b { color: var(--ink-soft); font-weight: 500; }
 
-    .decks { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2.4vw, 24px); }
-    @media (max-width: 720px) { .decks { grid-template-columns: 1fr; } }
+    .decks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 24px); }
+    @media (max-width: 900px) { .decks { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .decks { grid-template-columns: 1fr; } }
     a.deck {
       display: flex; flex-direction: column; gap: 12px; text-decoration: none;
       background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
@@ -119,6 +120,13 @@
         <span class="num">Deck 02 · Support</span>
         <h2>Washington's small-farm support network</h2>
         <p>Who will train you, walk your fields, test your soil, and advise how the farm is run — WSU Extension, courses, on-farm advisors, incubators, research grants, and CWU.</p>
+        <span class="go">Open deck</span>
+      </a>
+      <a class="deck" href="agritourism.html">
+        <span class="glyph" aria-hidden="true">🧺</span>
+        <span class="num">Deck 03 · Marketing</span>
+        <h2>Agritourism &amp; value-added marketing</h2>
+        <p>The revenue side: the value-added product ladder, visitor streams, WA licensing and liability rules, brand and story, and a low-stress seasonal calendar.</p>
         <span class="go">Open deck</span>
       </a>
     </div>

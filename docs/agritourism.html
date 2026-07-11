@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agritourism & Value-Added Marketing - Small Farm Plan</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🧺</text></svg>">
+</head>
+<body>
+<a href="index.html" aria-label="Back to Farm Plan home" style="position:fixed;top:16px;left:18px;z-index:50;font-family:ui-monospace,Consolas,monospace;font-size:12px;letter-spacing:.05em;text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid rgba(128,128,128,.32);background:rgba(140,140,140,.14);color:inherit;backdrop-filter:blur(6px)">&#8592; Farm Plan</a><style>
+  :root {
+    --bg: #E9EBE2;
+    --surface: #F4F5EF;
+    --surface-2: #FDFDFA;
+    --ink: #24281E;
+    --ink-soft: #565B48;
+    --ink-faint: #8A8E7C;
+    --lav: #6E5CA6;
+    --lav-soft: #E4DEF3;
+    --sage: #5F7049;
+    --wheat: #9C7620;
+    --line: rgba(36, 40, 30, 0.14);
+    --line-strong: rgba(36, 40, 30, 0.28);
+    --shadow: 0 1px 2px rgba(36,40,30,.06), 0 8px 30px rgba(36,40,30,.07);
+    --good: #4B7A3F;
+    --warn: #A8641C;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16151B;
+      --surface: #201E28;
+      --surface-2: #2A2733;
+      --ink: #ECEAF3;
+      --ink-soft: #ADA7BC;
+      --ink-faint: #726C82;
+      --lav: #B7A8E4;
+      --lav-soft: #322C46;
+      --sage: #A6B884;
+      --wheat: #DBB55F;
+      --line: rgba(236, 234, 243, 0.14);
+      --line-strong: rgba(236, 234, 243, 0.30);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.35);
+      --good: #7FB56F;
+      --warn: #D89A4C;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #E9EBE2; --surface: #F4F5EF; --surface-2: #FDFDFA;
+    --ink: #24281E; --ink-soft: #565B48; --ink-faint: #8A8E7C;
+    --lav: #6E5CA6; --lav-soft: #E4DEF3; --sage: #5F7049; --wheat: #9C7620;
+    --line: rgba(36,40,30,.14); --line-strong: rgba(36,40,30,.28);
+    --shadow: 0 1px 2px rgba(36,40,30,.06), 0 8px 30px rgba(36,40,30,.07);
+    --good: #4B7A3F; --warn: #A8641C;
+  }
+  :root[data-theme="dark"] {
+    --bg: #16151B; --surface: #201E28; --surface-2: #2A2733;
+    --ink: #ECEAF3; --ink-soft: #ADA7BC; --ink-faint: #726C82;
+    --lav: #B7A8E4; --lav-soft: #322C46; --sage: #A6B884; --wheat: #DBB55F;
+    --line: rgba(236,234,243,.14); --line-strong: rgba(236,234,243,.30);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.35);
+    --good: #7FB56F; --warn: #D89A4C;
+  }
+
+  * { box-sizing: border-box; }
+
+  :root {
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    -webkit-font-smoothing: antialiased; line-height: 1.55; overflow: hidden;
+  }
+
+  .deck { position: relative; height: 100vh; width: 100vw; overflow: hidden; }
+
+  .slide {
+    position: absolute; inset: 0; display: none;
+    padding: clamp(28px, 5vh, 64px) clamp(24px, 6vw, 92px);
+    overflow-y: auto; opacity: 0;
+  }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-inner {
+    margin: auto; width: 100%; max-width: 1080px;
+    display: flex; flex-direction: column; gap: clamp(16px, 2.4vh, 26px);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .slide.active .anim { animation: rise .55s cubic-bezier(.2,.7,.2,1) both; }
+    .slide.active .anim:nth-child(2) { animation-delay: .05s; }
+    .slide.active .anim:nth-child(3) { animation-delay: .10s; }
+    .slide.active .anim:nth-child(4) { animation-delay: .15s; }
+    .slide.active .anim:nth-child(5) { animation-delay: .20s; }
+    .slide.active .anim:nth-child(6) { animation-delay: .25s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: clamp(11px, 1.2vw, 13px);
+    letter-spacing: .18em; text-transform: uppercase; color: var(--lav);
+    display: flex; align-items: center; gap: .7em; margin: 0;
+  }
+  .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--lav); display: inline-block; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 5.6vw, 60px); line-height: 1.04; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 3.7vw, 40px); line-height: 1.08; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+  .lede { font-size: clamp(16px, 1.9vw, 21px); color: var(--ink-soft); max-width: 62ch; margin: 0; }
+  p { margin: 0; }
+  strong { color: var(--ink); font-weight: 650; }
+  .lav-text { color: var(--lav); }
+
+  .grid { display: grid; gap: clamp(12px, 1.6vw, 18px); }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 820px) {
+    .g2, .g3, .g4 { grid-template-columns: 1fr; }
+    body { overflow: auto; }
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: clamp(16px, 1.8vw, 22px); box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .card .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+  .card h3 { font-family: var(--serif); font-size: clamp(17px, 1.9vw, 22px); font-weight: 600; margin: 0; line-height: 1.12; }
+  .card p { font-size: clamp(13px, 1.35vw, 15px); color: var(--ink-soft); }
+  .card.accent { border-color: color-mix(in srgb, var(--lav) 45%, var(--line)); }
+  .card .tag {
+    align-self: flex-start; font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+    padding: 3px 9px; border-radius: 999px; background: var(--lav-soft); color: var(--lav);
+    border: 1px solid color-mix(in srgb, var(--lav) 30%, transparent);
+  }
+
+  .figure { font-family: var(--serif); font-weight: 600; color: var(--wheat); font-size: clamp(24px, 3.2vw, 38px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .figure small { font-size: .5em; color: var(--ink-faint); font-family: var(--mono); font-weight: 400; letter-spacing: .05em; display: block; margin-top: 6px; }
+
+  ul.clean { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  ul.clean li { position: relative; padding-left: 24px; font-size: clamp(14px, 1.5vw, 16px); color: var(--ink-soft); }
+  ul.clean li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 7px; height: 7px; border-radius: 2px; background: var(--sage); transform: rotate(45deg); }
+  ul.clean li strong { color: var(--ink); }
+
+  .table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; background: var(--surface); font-size: clamp(13px, 1.35vw, 15px); }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; background: var(--surface-2); }
+  tbody tr:last-child td { border-bottom: none; }
+  td.crop { font-family: var(--serif); font-size: 1.08em; color: var(--ink); font-weight: 600; }
+  .pill { display: inline-block; font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 999px; letter-spacing: .03em; }
+  .pill.hi { background: color-mix(in srgb, var(--good) 20%, transparent); color: var(--good); }
+  .pill.mid { background: color-mix(in srgb, var(--wheat) 22%, transparent); color: var(--wheat); }
+  .pill.lo { background: color-mix(in srgb, var(--ink-faint) 22%, transparent); color: var(--ink-faint); }
+
+  .callout { border-left: 3px solid var(--lav); background: var(--lav-soft); padding: 14px 18px; border-radius: 0 12px 12px 0; font-size: clamp(14px, 1.5vw, 16px); color: var(--ink); }
+  .callout.warn { border-left-color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, var(--surface)); }
+
+  .two-col { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(20px, 3vw, 44px); align-items: start; }
+  @media (max-width: 820px) { .two-col { grid-template-columns: 1fr; } }
+
+  .title-slide .slide-inner { gap: clamp(18px, 3vh, 34px); }
+  .sprig { display: flex; gap: 5px; align-items: flex-end; height: 46px; margin-bottom: 4px; }
+  .sprig span { width: 4px; background: var(--lav); border-radius: 3px 3px 0 0; opacity: .85; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px 22px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-faint); }
+  .meta-row b { color: var(--ink-soft); font-weight: 500; }
+
+  .progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--lav); z-index: 40; transition: width .35s cubic-bezier(.2,.7,.2,1); }
+  .chrome { position: fixed; bottom: 18px; left: 0; right: 0; z-index: 40; display: flex; align-items: center; justify-content: center; gap: 18px; pointer-events: none; }
+  .dots { display: flex; gap: 8px; pointer-events: auto; }
+  .dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 999px; background: var(--line-strong); cursor: pointer; transition: transform .2s, background .2s; }
+  .dots button.on { background: var(--lav); transform: scale(1.5); }
+  .dots button:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; }
+  .counter { position: fixed; bottom: 16px; right: 22px; z-index: 40; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .nav-btn {
+    position: fixed; top: 50%; transform: translateY(-50%); z-index: 40;
+    width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--ink-soft);
+    cursor: pointer; font-size: 18px; display: grid; place-items: center; backdrop-filter: blur(6px);
+    transition: background .2s, color .2s, opacity .2s;
+  }
+  .nav-btn:hover { background: var(--surface); color: var(--lav); }
+  .nav-btn:focus-visible { outline: 2px solid var(--lav); outline-offset: 2px; }
+  .nav-btn.prev { left: 16px; } .nav-btn.next { right: 16px; }
+  .nav-btn:disabled { opacity: .25; cursor: default; }
+  .theme-toggle {
+    position: fixed; top: 16px; right: 18px; z-index: 40;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em;
+    padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--ink-soft);
+    cursor: pointer; backdrop-filter: blur(6px);
+  }
+  .theme-toggle:hover { color: var(--lav); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--lav); outline-offset: 2px; }
+
+  .foot { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: .04em; }
+
+  @media (max-width: 820px) { .nav-btn { display: none; } }
+
+  @media print {
+    body, .deck { overflow: visible; height: auto; }
+    .slide { position: relative; display: flex !important; opacity: 1 !important; page-break-after: always; min-height: 92vh; border-bottom: 1px solid #ccc; }
+    .chrome, .counter, .nav-btn, .theme-toggle, .progress { display: none !important; }
+  }
+</style>
+
+<div class="progress" id="progress"></div>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme">☾ theme</button>
+
+<div class="deck" id="deck">
+
+  <!-- 1 — TITLE -->
+  <section class="slide title-slide active" aria-label="Title">
+    <div class="slide-inner">
+      <div class="sprig anim" aria-hidden="true">
+        <span style="height:44%"></span><span style="height:70%"></span><span style="height:52%"></span><span style="height:92%"></span><span style="height:64%"></span><span style="height:100%"></span><span style="height:58%"></span><span style="height:80%"></span>
+      </div>
+      <p class="eyebrow anim">Small Farm Project · Agritourism &amp; Marketing</p>
+      <h1 class="anim">The purple economy: turning a lavender farm into a destination</h1>
+      <p class="lede anim">A small farm doesn't break even by selling raw flowers — it breaks even by turning them into products people carry home and experiences people drive for. This is the plan for the revenue side: value-added goods, visitors, and the brand that ties them together.</p>
+      <div class="meta-row anim">
+        <span><b>Setting</b> Sequim — "Lavender Capital of N. America"</span>
+        <span><b>Model</b> value-added + agritourism</span>
+        <span><b>Lens</b> break-even &amp; low-stress</span>
+      </div>
+      <p class="foot anim">Draft v1 · Revenue figures are illustrative industry examples, not projections. Fees, permits &amp; the festival date are 2026 values — verify before relying.</p>
+    </div>
+  </section>
+
+  <!-- 2 — WHY MARKETING IS THE GAME -->
+  <section class="slide" aria-label="Why value-added is the game">
+    <div class="slide-inner">
+      <p class="eyebrow anim">The core idea</p>
+      <h2 class="anim">For a small farm, the margin isn't in the crop — it's in what you do with it</h2>
+      <p class="lede anim">Raw lavender is a commodity. The same acre becomes a living once you climb the value ladder and invite people onto the land. Industry experience is blunt about it: for small lavender farms, <strong>agritourism + direct-market value-added products is the most profitable model</strong>, and diversifying this way has lifted farm revenue by around <strong>25%</strong>.</p>
+      <div class="grid g3 anim">
+        <div class="card accent">
+          <span class="kicker">Sell the jar, not the stem</span>
+          <h3>Value-added products</h3>
+          <p>Processing raw flowers into shelf-stable goods multiplies margin and lets you sell year-round, far beyond the ~6-week bloom.</p>
+        </div>
+        <div class="card accent">
+          <span class="kicker">Sell the visit</span>
+          <h3>Agritourism</h3>
+          <p>U-pick, tours, and events turn the farm itself into the product — visitors pay to be there and buy on the way out.</p>
+        </div>
+        <div class="card accent">
+          <span class="kicker">Sell the feeling</span>
+          <h3>Brand &amp; story</h3>
+          <p>A calm, beautiful, authentic farm is a marketing asset. The lifestyle you want <em>is</em> the thing customers are buying.</p>
+        </div>
+      </div>
+      <div class="callout anim"><strong>Reframe:</strong> you're not a lavender grower who also sells things — you're a small hospitality-and-products business that happens to grow its own hero ingredient.</div>
+    </div>
+  </section>
+
+  <!-- 3 — SEQUIM ADVANTAGE -->
+  <section class="slide" aria-label="The Sequim advantage">
+    <div class="slide-inner">
+      <p class="eyebrow anim">Location is doing your marketing</p>
+      <h2 class="anim">You'd be buying into the best-known lavender address in the country</h2>
+      <p class="lede anim">Sequim brands itself the <strong>"Lavender Capital of North America,"</strong> and its summer festival is a decades-old visitor magnet. A new farm here inherits an audience that already exists — a rare head start.</p>
+      <div class="grid g3 anim">
+        <div class="card">
+          <span class="kicker">The anchor event</span>
+          <h3>Sequim Lavender Weekend</h3>
+          <p>The <strong>30th annual festival runs July 17–19, 2026</strong>, centered on Carrie Blake Park, with farms across the Dungeness Valley opening for tours, u-pick, and sales.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Built-in trail</span>
+          <h3>An established farm circuit</h3>
+          <p>Roughly a dozen grower-association farms already draw visitors farm-to-farm — a marketing cooperative you can join rather than build from scratch.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Reasons to come</span>
+          <h3>A tourism corridor</h3>
+          <p>Dungeness Spit, Olympic National Park &amp; Hurricane Ridge, and Port Angeles keep a steady stream of travelers passing your gate all season.</p>
+        </div>
+      </div>
+      <div class="callout anim"><strong>Action:</strong> join the <em>Sequim Lavender Growers Association / trail</em> early — membership plugs a new farm into the festival map, shared advertising, and existing visitor traffic.</div>
+    </div>
+  </section>
+
+  <!-- 4 — PRODUCT LADDER -->
+  <section class="slide" aria-label="The value-added product ladder">
+    <div class="slide-inner">
+      <p class="eyebrow anim">Revenue stream 1 · Products</p>
+      <h2 class="anim">The value-added ladder — each rung captures more margin per plant</h2>
+      <div class="table-wrap anim">
+        <table>
+          <thead>
+            <tr><th>Rung</th><th>Products</th><th>Margin</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="crop">Fresh</td>
+              <td>Cut bunches, potted plants, u-pick bundles</td>
+              <td><span class="pill lo">Base</span></td>
+              <td>Simplest, but seasonal and lowest per-stem return.</td>
+            </tr>
+            <tr>
+              <td class="crop">Dried</td>
+              <td>Dried bundles, buds, sachets, wreaths</td>
+              <td><span class="pill mid">Better</span></td>
+              <td>Shelf-stable; sells all year; light to ship.</td>
+            </tr>
+            <tr>
+              <td class="crop">Culinary</td>
+              <td>Lavender honey, tea, syrup, jam, baking blends</td>
+              <td><span class="pill mid">Good</span></td>
+              <td>Pairs naturally with your <strong>bees</strong>; strong gift appeal.</td>
+            </tr>
+            <tr>
+              <td class="crop">Body care</td>
+              <td>Soap, lotion, balm, bath salts, candles</td>
+              <td><span class="pill hi">High</span></td>
+              <td>Best gift-shop margins; note: cosmetics, not "cottage food" (see rules).</td>
+            </tr>
+            <tr>
+              <td class="crop">Essential oil</td>
+              <td>Distilled oil, roll-ons, diffuser blends</td>
+              <td><span class="pill hi">Highest</span></td>
+              <td>Packaging small &amp; retailing direct is where the money is (below).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout anim"><strong>The distillation math (illustrative):</strong> an acre yields ~1–2 gallons of essential oil. Sold wholesale that's ~$3,000/gallon — but bottled into 10&nbsp;ml retail bottles at ~$15 each, a gallon's worth can fetch on the order of <span class="lav-text">$50,000</span>. The lesson isn't "get rich on oil" — it's <em>small packages sold direct beat bulk sold wholesale, every time.</em></div>
+    </div>
+  </section>
+
+  <!-- 5 — AGRITOURISM STREAMS -->
+  <section class="slide" aria-label="Agritourism revenue streams">
+    <div class="slide-inner">
+      <p class="eyebrow anim">Revenue stream 2 · Visitors</p>
+      <h2 class="anim">The farm as the attraction — ways people pay to be there</h2>
+      <div class="grid g4 anim">
+        <div class="card"><span class="kicker">Come pick</span><h3>U-pick fields</h3><p>Visitors cut their own bundles — low labor for you, memorable for them, and they buy products after.</p></div>
+        <div class="card"><span class="kicker">Come learn</span><h3>Tours &amp; workshops</h3><p>Free or ticketed farm tours; paid classes in wreath-making, distillation, or sachets.</p></div>
+        <div class="card"><span class="kicker">Come sit</span><h3>Farm stand &amp; café treats</h3><p>A shop plus signature bites — lavender lemonade and ice cream are proven crowd-pleasers here.</p></div>
+        <div class="card"><span class="kicker">Come celebrate</span><h3>Events &amp; photos</h3><p>Small weddings, photography sessions, and private group visits — high value, few dates.</p></div>
+      </div>
+      <div class="two-col anim">
+        <div class="callout"><strong>Illustrative scale:</strong> a modest u-pick drawing ~2,000 visitors at ~$25 average spend is about <span class="lav-text">$50,000</span> in a season — layered on top of product sales, not instead of them.</div>
+        <div class="card accent">
+          <span class="kicker">Aging-friendly design</span>
+          <p>Lean toward <strong>self-guided tours, clear signage, and seasonal help</strong> during the bloom rush. The goal is to host the crowd for a few intense weeks, then return to a quiet farm — not to run a theme park year-round.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 — CHANNELS -->
+  <section class="slide" aria-label="Sales channels">
+    <div class="slide-inner">
+      <p class="eyebrow anim">Where you actually sell</p>
+      <h2 class="anim">A mix of channels keeps cash flowing past the bloom</h2>
+      <div class="grid g3 anim">
+        <div class="card accent"><span class="kicker">Highest margin</span><h3>On-farm stand &amp; shop</h3><p>No middleman, full retail price, impulse buys from tour visitors. Your best channel by far.</p></div>
+        <div class="card"><span class="kicker">Reach</span><h3>Online store + shipping</h3><p>Shelf-stable products travel well; a simple web shop sells to festival visitors long after they've gone home.</p></div>
+        <div class="card"><span class="kicker">Foot traffic</span><h3>Farmers markets &amp; festival</h3><p>Seasonal direct sales plus the marketing value of showing up where buyers already gather.</p></div>
+        <div class="card"><span class="kicker">Volume</span><h3>Wholesale to local shops</h3><p>Gift stores, tasting rooms, and inns — lower margin, but steady and hands-off once set up.</p></div>
+        <div class="card"><span class="kicker">Partnerships</span><h3>Hotels, spas &amp; restaurants</h3><p>Amenity soaps, spa oils, culinary lavender — recurring orders tied to the local tourism economy.</p></div>
+        <div class="card"><span class="kicker">Recurring</span><h3>Subscriptions &amp; gifts</h3><p>Seasonal gift boxes and a small subscription smooth revenue across the quiet months.</p></div>
+      </div>
+      <div class="callout anim"><strong>Principle:</strong> anchor on the <em>on-farm shop</em> (best margin), use <em>online + wholesale</em> to sell the off-season, and treat the <em>festival</em> as your once-a-year customer-acquisition engine.</div>
+    </div>
+  </section>
+
+  <!-- 7 — PRODUCT REGULATIONS -->
+  <section class="slide" aria-label="Value-added product rules">
+    <div class="slide-inner">
+      <p class="eyebrow anim">The rulebook · Products</p>
+      <h2 class="anim">Two licenses define how far your products can travel</h2>
+      <div class="two-col anim">
+        <div class="grid" style="gap:14px">
+          <div class="card accent">
+            <span class="kicker">The on-ramp</span>
+            <h3>WA Cottage Food Permit</h3>
+            <p>Make <strong>low-risk</strong> foods in your home kitchen and sell them <strong>directly to consumers</strong> — farm stand, farmers market, festival. About <strong>$355 for two years</strong>, capped at <strong>$35,000</strong> gross sales/year.</p>
+          </div>
+          <div class="card accent">
+            <span class="kicker">The scale-up</span>
+            <h3>WSDA Food Processor License</h3>
+            <p>Required to <strong>wholesale or sell through stores/restaurants</strong>. Fees scale with sales — roughly <strong>$92</strong> under $50K, rising by tier. Needs an approved processing facility.</p>
+          </div>
+        </div>
+        <div class="grid" style="gap:14px">
+          <div class="callout warn anim">
+            <strong>Big caveat:</strong> soap, lotion, balms, and essential oils are <em>cosmetics</em>, not food — the cottage-food permit doesn't cover them. They fall under separate FDA cosmetic rules. Keep your <em>edible</em> and <em>body-care</em> product lines on different regulatory tracks.
+          </div>
+          <div class="card">
+            <span class="kicker">Sensible path</span>
+            <p>Start with a <strong>cottage-food + on-farm</strong> footprint to test products cheaply, then graduate to a <strong>processor license</strong> once wholesale or online volume justifies a commercial kitchen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 — LIABILITY & ZONING -->
+  <section class="slide" aria-label="Liability and zoning for visitors">
+    <div class="slide-inner">
+      <p class="eyebrow anim">The rulebook · Visitors</p>
+      <h2 class="anim">Inviting the public brings two legal chores — both very manageable</h2>
+      <div class="grid g2 anim">
+        <div class="card accent">
+          <span class="kicker">Liability</span>
+          <h3>Post the sign, get the immunity</h3>
+          <p>Washington's agritourism law (<strong>RCW 4.24.830–.850</strong>) shields you from liability for the <em>inherent risks</em> of farm visits — <strong>but only if you post the specific warning sign at the main entry</strong>. It won't cover gross negligence, known hazards you hid, or serving alcohol. Carry farm liability insurance regardless.</p>
+        </div>
+        <div class="card accent">
+          <span class="kicker">Zoning</span>
+          <h3>Check Clallam County first</h3>
+          <p>Counties decide whether agritourism is allowed outright or needs a <strong>conditional use permit</strong>. State growth law treats it as an <em>accessory</em> farm use as long as you convert <strong>no more than an acre</strong> out of production (RCW 36.70A.177) — verify the local rules before planning events.</p>
+        </div>
+      </div>
+      <div class="callout anim"><strong>Pre-opening checklist:</strong> confirm Clallam County zoning / permit status → post the compliant RCW warning sign → bind a farm liability insurance policy. Do these three and the public-facing side is on solid ground.</div>
+    </div>
+  </section>
+
+  <!-- 9 — BRAND & STORY -->
+  <section class="slide" aria-label="Brand and story">
+    <div class="slide-inner">
+      <p class="eyebrow anim">The thread that ties it together</p>
+      <h2 class="anim">Build one brand and let it run across everything</h2>
+      <p class="lede anim">A lavender farm sells beauty and calm — your marketing just has to be as consistent as the product. The same look and story should carry from the bottle label to the front gate to the website.</p>
+      <div class="grid g3 anim">
+        <div class="card"><span class="kicker">Identity</span><h3>Name, mark &amp; palette</h3><p>One farm name, one logo, one color story (the purple rows sell themselves) — applied to labels, signage, and packaging alike.</p></div>
+        <div class="card"><span class="kicker">Presence</span><h3>Site + online shop + maps</h3><p>A simple website with a shop, plus Google Maps and tourism-trail listings so travelers can find and buy from you.</p></div>
+        <div class="card"><span class="kicker">Reach</span><h3>Photography &amp; social</h3><p>The farm is endlessly photogenic — visitor photos and a light social presence are cheap, compounding advertising.</p></div>
+      </div>
+      <div class="callout anim"><strong>Your unfair advantage:</strong> the authentic, unhurried lifestyle you're designing for yourself is exactly the story customers want to buy into. Live it, photograph it, and the brand writes itself.</div>
+    </div>
+  </section>
+
+  <!-- 10 — CALENDAR -->
+  <section class="slide" aria-label="A calm calendar">
+    <div class="slide-inner">
+      <p class="eyebrow anim">Fitting it to a low-stress life</p>
+      <h2 class="anim">Concentrate the intensity, protect the quiet</h2>
+      <div class="table-wrap anim">
+        <table>
+          <thead><tr><th>Season</th><th>Focus</th><th>Intensity</th></tr></thead>
+          <tbody>
+            <tr><td class="crop">Spring</td><td>Field prep, product-making, line up seasonal help, open the online shop for the year</td><td><span class="pill mid">Building</span></td></tr>
+            <tr><td class="crop">Jun–Jul · bloom</td><td>U-pick, tours, the festival weekend — your big public window and cash surge</td><td><span class="pill hi">Peak — all hands</span></td></tr>
+            <tr><td class="crop">Late summer</td><td>Harvest, distillation, drying, restock inventory for the year</td><td><span class="pill mid">Steady</span></td></tr>
+            <tr><td class="crop">Fall–Winter</td><td>Online &amp; wholesale orders, holiday gift boxes, planning, rest</td><td><span class="pill lo">Quiet</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout anim"><strong>The design goal:</strong> pour the people-facing energy into a few peak weeks (with hired seasonal help), let shelf-stable products and online orders carry the rest, and keep most of the year calm — exactly what an aging-friendly, break-even farm needs.</div>
+    </div>
+  </section>
+
+  <!-- 11 — DO NEXT + SOURCES -->
+  <section class="slide" aria-label="Do next and sources">
+    <div class="slide-inner">
+      <p class="eyebrow anim">Start during the runway</p>
+      <h2 class="anim">What to do now — years before you plant a thing</h2>
+      <div class="grid g2 anim">
+        <ul class="clean" style="gap:14px">
+          <li><strong>Visit as research.</strong> Spend a Lavender Weekend walking the Sequim farms — note what they sell, charge, and how they host.</li>
+          <li><strong>Meet the growers' association.</strong> Understand membership, the festival, and shared marketing before you're a competitor-neighbor.</li>
+          <li><strong>Draft a product line.</strong> Pick a starter set across the ladder — a few culinary, a few body-care, dried goods — and price them.</li>
+        </ul>
+        <ul class="clean" style="gap:14px">
+          <li><strong>Map the license path.</strong> Cottage-food to start, WSDA processor license later; keep food vs. cosmetics separate.</li>
+          <li><strong>Pre-clear the public side.</strong> Note Clallam zoning, the RCW warning sign, and a farm liability policy for opening day.</li>
+          <li><strong>Claim the brand early.</strong> A name, a domain, and a simple page can start gathering an audience long before bloom one.</li>
+        </ul>
+      </div>
+      <p class="foot anim">Sources: Sequim Tourism / Sequim Lavender Growers Association &amp; Lavender Trail (festival, farms) · ATTRA–NCAT &amp; Penn State Extension (lavender markets &amp; agritourism economics) · WSDA (Cottage Food Permit, Food Processor License) · WA RCW 4.24.830–.850 (agritourism liability) &amp; RCW 36.70A.177 (accessory use) · WSU Regional Small Farms (agritourism). Retrieved July 2026. Revenue figures illustrative.</p>
+    </div>
+  </section>
+
+</div>
+
+<button class="nav-btn prev" id="prev" aria-label="Previous slide">‹</button>
+<button class="nav-btn next" id="next" aria-label="Next slide">›</button>
+<div class="chrome"><div class="dots" id="dots" role="tablist" aria-label="Slides"></div></div>
+<div class="counter" id="counter">01 / 11</div>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var total = slides.length;
+    var i = 0;
+    var dotsWrap = document.getElementById('dots');
+    var counter = document.getElementById('counter');
+    var progress = document.getElementById('progress');
+    var prevBtn = document.getElementById('prev');
+    var nextBtn = document.getElementById('next');
+
+    slides.forEach(function (s, n) {
+      var b = document.createElement('button');
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+      b.addEventListener('click', function () { go(n); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function go(n) {
+      n = Math.max(0, Math.min(total - 1, n));
+      slides[i].classList.remove('active');
+      i = n;
+      slides[i].classList.add('active');
+      slides[i].scrollTop = 0;
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+      counter.textContent = pad(i + 1) + ' / ' + pad(total);
+      progress.style.width = ((i + 1) / total * 100) + '%';
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = i === total - 1;
+    }
+
+    prevBtn.addEventListener('click', function () { go(i - 1); });
+    nextBtn.addEventListener('click', function () { go(i + 1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(i + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+      else if (e.key === 'Home') { go(0); }
+      else if (e.key === 'End') { go(total - 1); }
+    });
+
+    var root = document.documentElement;
+    var tBtn = document.getElementById('themeToggle');
+    function current() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    tBtn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      tBtn.textContent = next === 'dark' ? '☀ theme' : '☾ theme';
+    });
+
+    var x0 = null;
+    document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) { go(dx < 0 ? i + 1 : i - 1); }
+      x0 = null;
+    }, { passive: true });
+
+    go(0);
+  })();
+</script>
+
+</body>
+</html>
+
