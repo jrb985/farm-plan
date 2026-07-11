@@ -63,9 +63,8 @@
     .meta { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); letter-spacing: .03em; margin: 0 0 44px; }
     .meta b { color: var(--ink-soft); font-weight: 500; }
 
-    .decks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 24px); }
-    @media (max-width: 900px) { .decks { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 620px) { .decks { grid-template-columns: 1fr; } }
+    .decks { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2.4vw, 24px); }
+    @media (max-width: 560px) { .decks { grid-template-columns: 1fr; } }
     a.deck {
       display: flex; flex-direction: column; gap: 12px; text-decoration: none;
       background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
@@ -128,6 +127,13 @@
         <h2>Agritourism &amp; value-added marketing</h2>
         <p>The revenue side: the value-added product ladder, visitor streams, WA licensing and liability rules, brand and story, and a low-stress seasonal calendar.</p>
         <span class="go">Open deck</span>
+      </a>
+      <a class="deck" href="breakeven.html">
+        <span class="glyph" aria-hidden="true">⚖️</span>
+        <span class="num">Tool · Interactive</span>
+        <h2>Break-even sandbox</h2>
+        <p>A crop-agnostic model: move the sliders on land, financing, revenue, and costs to see the upfront capital needed, the minimum viable acreage, and whether the farm covers itself — cash vs. financed, side by side.</p>
+        <span class="go">Open tool</span>
       </a>
     </div>
   </div>
