@@ -1,0 +1,7 @@
+# Publish ONLY the website in /docs.
+# Everything else in this folder — planning notes (including README.md and
+# 04-financial-and-legal.md), and the Artifact source decks — stays private
+# and is never committed.
+/*
+!/docs/
+!/.gitignore
